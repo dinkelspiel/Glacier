@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "FjordTemplate/1.0.0": {
+        "dependencies": {
+          "Fjord": "1.0.7.0"
+        },
+        "runtime": {
+          "FjordTemplate.dll": {}
+        }
+      },
+      "Fjord/1.0.7.0": {
+        "runtime": {
+          "Fjord.dll": {
+            "assemblyVersion": "1.0.7.0",
+            "fileVersion": "1.0.7.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FjordTemplate/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Fjord/1.0.7.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

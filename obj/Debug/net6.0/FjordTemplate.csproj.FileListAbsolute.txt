@@ -1,0 +1,16 @@
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\bin\Debug\net6.0\FjordTemplate.exe
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\bin\Debug\net6.0\FjordTemplate.deps.json
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\bin\Debug\net6.0\FjordTemplate.runtimeconfig.json
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\bin\Debug\net6.0\FjordTemplate.dll
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\bin\Debug\net6.0\ref\FjordTemplate.dll
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\bin\Debug\net6.0\FjordTemplate.pdb
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\obj\Debug\net6.0\FjordTemplate.csproj.AssemblyReference.cache
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\obj\Debug\net6.0\FjordTemplate.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\obj\Debug\net6.0\FjordTemplate.AssemblyInfoInputs.cache
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\obj\Debug\net6.0\FjordTemplate.AssemblyInfo.cs
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\obj\Debug\net6.0\FjordTemplate.csproj.CoreCompileInputs.cache
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\obj\Debug\net6.0\FjordTemplate.csproj.CopyComplete
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\obj\Debug\net6.0\FjordTemplate.dll
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\obj\Debug\net6.0\ref\FjordTemplate.dll
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\obj\Debug\net6.0\FjordTemplate.pdb
+C:\Users\wille\Documents\Coding\C#\SnowTilebased\obj\Debug\net6.0\FjordTemplate.genruntimeconfig.cache

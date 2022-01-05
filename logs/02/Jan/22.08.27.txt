@@ -1,0 +1,6 @@
+[22:08:17] init -> SDL initialized without errors
+[22:08:17] init -> Window created without errors
+[22:08:17] init -> Renderer created without errors
+[22:08:17] load_langfile -> Couldn't find lang_file 'en_US' in asset_pack 'main' aborting.
+[22:08:17] load_scene -> Loaded scene 'glacier' successfully!
+[22:08:27] stop -> Game cleaned

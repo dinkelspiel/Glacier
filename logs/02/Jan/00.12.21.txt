@@ -1,0 +1,45 @@
+[00:12:13] init -> SDL initialized without errors
+[00:12:14] init -> Window created without errors
+[00:12:14] init -> Renderer created without errors
+[00:12:14] load_langfile -> Couldn't find lang_file 'en_US' in asset_pack 'main' aborting.
+[00:12:14] load_scene -> Loaded scene 'glacier' successfully!
+[00:12:14] 15x update -> -1
+[00:12:14] update -> 64
+[00:12:14] 7x update -> -1
+[00:12:14] update -> 64
+[00:12:14] 7x update -> -1
+[00:12:14] update -> 64
+[00:12:18] 132x update -> -1
+[00:12:18] update -> 64
+[00:12:18] 13x update -> -1
+[00:12:18] update -> 64
+[00:12:18] 4x update -> -1
+[00:12:18] update -> 64
+[00:12:18] 5x update -> -1
+[00:12:18] update -> 64
+[00:12:19] 7x update -> -1
+[00:12:19] update -> 64
+[00:12:19] 4x update -> -1
+[00:12:19] update -> 0
+[00:12:19] update -> 3
+[00:12:19] 10x update -> -1
+[00:12:19] update -> 0
+[00:12:19] 1x update -> -1
+[00:12:19] update -> 18
+[00:12:19] 2x update -> -1
+[00:12:19] update -> 3
+[00:12:19] 4x update -> -1
+[00:12:19] update -> 0
+[00:12:19] update -> 18
+[00:12:19] update -> -1
+[00:12:19] update -> 3
+[00:12:19] 1x update -> -1
+[00:12:19] update -> 0
+[00:12:19] update -> 18
+[00:12:19] update -> -1
+[00:12:19] update -> 3
+[00:12:20] 21x update -> -1
+[00:12:20] update -> 67
+[00:12:20] 4x update -> -1
+[00:12:20] update -> 39
+[00:12:21] stop -> Game cleaned

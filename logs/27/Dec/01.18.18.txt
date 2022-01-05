@@ -1,0 +1,6 @@
+[01:18:14] init -> SDL initialized without errors
+[01:18:14] init -> Window created without errors
+[01:18:15] init -> Renderer created without errors
+[01:18:15] load_langfile -> Couldn't find lang_file 'en_US' in asset_pack 'main' aborting.
+[01:18:15] load_scene -> Loaded scene 'game-template' successfully!
+[01:18:18] stop -> Game cleaned

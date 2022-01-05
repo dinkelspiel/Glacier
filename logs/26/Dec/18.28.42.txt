@@ -1,0 +1,12 @@
+[18:28:41] init -> SDL initialized without errors
+[18:28:41] init -> Window created without errors
+[18:28:42] init -> Renderer created without errors
+[18:28:42] load_langfile -> Couldn't find lang_file 'en_US' in asset_pack 'main' aborting.
+[18:28:42] run -> Init error!
+[18:28:42] stop -> 
+'Fjord.Modules.Game.Sprite_Renderer' does not contain a definition for 'set_texture'
+   at CallSite.Target(Closure , CallSite , Object , String )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute2[T0,T1,TRet](CallSite site, T0 arg0, T1 arg1)
+   at Template_Game.main.on_load() in C:\Users\wille\Documents\Coding\C#\SnowTilebased\Program.cs:line 30
+   at Fjord.game.run(scene start_scene, String title)
+[18:28:42] stop -> Game cleaned
