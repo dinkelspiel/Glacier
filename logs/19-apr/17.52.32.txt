@@ -1,0 +1,11 @@
+[17:52:21] init -> SDL initialized without errors
+[17:52:21] init -> Window created without errors
+[17:52:22] init -> Renderer created without errors
+[17:52:22] load_langfile -> Couldn't find lang_file 'en_US' in asset_pack 'main' ignoring.
+[17:52:22] load_scene -> Loaded scene 'glacier' successfully!
+[17:52:25] 311x slider_int -> 
+[17:52:27] 224x slider_int -> Grid Width
+[17:52:27] 100x slider_int -> Grid Height
+[17:52:28] 80x slider_int -> Tile Width
+[17:52:32] 540x slider_int -> Tile Height
+[17:52:32] stop -> Game cleaned

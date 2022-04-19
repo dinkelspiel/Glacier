@@ -1,0 +1,230 @@
+[17:51:56] init -> SDL initialized without errors
+[17:51:56] init -> Window created without errors
+[17:51:57] init -> Renderer created without errors
+[17:51:57] load_langfile -> Couldn't find lang_file 'en_US' in asset_pack 'main' ignoring.
+[17:51:57] load_scene -> Loaded scene 'glacier' successfully!
+[17:51:58] draw_file -> file
+[17:51:58] 3x slider_int -> 
+[17:51:58] draw_file -> file
+[17:51:58] 3x slider_int -> 
+[17:51:58] draw_file -> file
+[17:51:58] 3x slider_int -> 
+[17:51:58] draw_file -> file
+[17:51:58] 3x slider_int -> 
+[17:51:58] draw_file -> file
+[17:51:58] 3x slider_int -> 
+[17:51:58] draw_file -> file
+[17:51:58] 3x slider_int -> 
+[17:51:58] draw_file -> file
+[17:51:58] 3x slider_int -> 
+[17:51:58] draw_file -> file
+[17:51:58] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:51:59] 3x slider_int -> 
+[17:51:59] draw_file -> file
+[17:52:00] 3x slider_int -> 
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> 
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> 
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:00] 3x slider_int -> Grid Width
+[17:52:00] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] draw_file -> file
+[17:52:01] 3x slider_int -> Grid Width
+[17:52:01] stop -> Game cleaned

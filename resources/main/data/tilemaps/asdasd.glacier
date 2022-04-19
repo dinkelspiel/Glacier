@@ -1,0 +1,1 @@
+{"properties":[{"name":"tile_id","datatype":"string","default_value":""}],"grid_size":{"x":1,"y":1},"tile_size":{"x":16,"y":16},"tiles":{},"tile_map":[[{"tile_id":""}]]}

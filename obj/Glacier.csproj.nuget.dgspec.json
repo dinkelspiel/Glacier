@@ -1,27 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wille\\Documents\\Coding\\C#\\Glacier\\Glacier.csproj": {}
+    "D:\\Projects2022\\Coding\\C#\\Fjord_projects\\glacier\\Glacier.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wille\\Documents\\Coding\\C#\\Glacier\\Glacier.csproj": {
+    "D:\\Projects2022\\Coding\\C#\\Fjord_projects\\glacier\\Glacier.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wille\\Documents\\Coding\\C#\\Glacier\\Glacier.csproj",
+        "projectUniqueName": "D:\\Projects2022\\Coding\\C#\\Fjord_projects\\glacier\\Glacier.csproj",
         "projectName": "Glacier",
-        "projectPath": "C:\\Users\\wille\\Documents\\Coding\\C#\\Glacier\\Glacier.csproj",
+        "projectPath": "D:\\Projects2022\\Coding\\C#\\Fjord_projects\\glacier\\Glacier.csproj",
         "packagesPath": "C:\\Users\\wille\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wille\\Documents\\Coding\\C#\\Glacier\\obj\\",
+        "outputPath": "D:\\Projects2022\\Coding\\C#\\Fjord_projects\\glacier\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\wille\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -53,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
