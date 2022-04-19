@@ -12,6 +12,7 @@ using Fjord.Modules.Input;
 using Fjord.Modules.Mathf;
 using Fjord.Modules.Debug;
 using Fjord.Modules.Ui;
+using Fjord.Modules.Tilemaps;
 
 namespace Glacier {
 
@@ -22,37 +23,13 @@ namespace Glacier {
         Tools
     }
 
-    struct property {
-        public string name;
-        public string datatype;
-        public dynamic default_value;
-
-        public property(string name, string data, dynamic default_value) {
-            this.name = name;
-            this.datatype = data;
-            this.default_value = default_value;
-        }
-    }
-
-    struct tile {
-        public string name;
-        public string path;
-        public texture tex;
-
-        public tile(string name, string path) {
-            this.name = name;
-            this.path = path;
-            this.tex = new texture(path);
-        }
-    }
-
     public class main : scene
     {
 
         string font = "Roboto";
 
         List<List<Dictionary<string, dynamic>>> tile_map = new List<List<Dictionary<string, dynamic>>>(); 
-        Dictionary<string, tile> tiles = new Dictionary<string, tile>();
+        Dictionary<string, glacier_tile> tiles = new Dictionary<string, glacier_tile>();
 
         V2 size = new V2(30, 30);
         V2 tile_size = new V2(16, 16);
@@ -60,8 +37,8 @@ namespace Glacier {
 
         V2f position = new V2f(0, 0);
 
-        List<property> properties = new List<property>() {
-            new property("tile_id", "string", ""),
+        List<glacier_property> properties = new List<glacier_property>() {
+            new glacier_property("tile_id", "string", ""),
         };
 
         V2 hovered = new V2(0, 0);
@@ -75,7 +52,7 @@ namespace Glacier {
         string add_tile_name = "";
         bool add_tile_button = false;
 
-        // Add Property Vars 
+        // Add glacier_property Vars 
 
         string add_prop_name = "";
         string add_prop_type = "string";
@@ -204,7 +181,7 @@ namespace Glacier {
                     draw_config();
                     break;
                 case (int)scenes.Property:
-                    draw_property();
+                    draw_glacier_property();
                     break;
                 case (int)scenes.Tools:
                     draw_tools();
@@ -213,8 +190,8 @@ namespace Glacier {
 
             if(input.get_input_state() == "add_tile") {
                 draw_add_tile();
-            } else if(input.get_input_state() == "add_property") {
-                draw_add_property();
+            } else if(input.get_input_state() == "add_glacier_property") {
+                draw_add_glacier_property();
             } else if(input.get_input_state() == "file") {
                 draw_file();
             }
@@ -243,9 +220,9 @@ namespace Glacier {
                     }
 
                     bool contains = false;
-                    property prop = properties[0];
+                    glacier_property prop = properties[0];
 
-                    foreach(property x in properties) {
+                    foreach(glacier_property x in properties) {
                         if(x.name == highlight_prop_name) {
                             contains = true;
                             prop = x;
@@ -321,7 +298,7 @@ namespace Glacier {
             devgui.button(new V4(20 + panel_rect.x, 145 + panel_rect.y, 80, 35), ref add_tile_button, "Roboto-Bold", "Add");
 
             if(add_tile_button) {
-                tiles.Add(add_tile_name, new tile(add_tile_name, add_tile_path));
+                tiles.Add(add_tile_name, new glacier_tile(add_tile_name, add_tile_path));
                 add_tile_name = "";
                 add_tile_path = "";
                 add_tile_button = false;
@@ -336,7 +313,7 @@ namespace Glacier {
             }
 
             if(input.get_key_just_pressed(input.key_return)) {
-                tiles.Add(add_tile_name, new tile(add_tile_name, add_tile_path));
+                tiles.Add(add_tile_name, new glacier_tile(add_tile_name, add_tile_path));
                 add_tile_name = "";
                 add_tile_path = "";
                 add_tile_button = false;
@@ -372,13 +349,13 @@ namespace Glacier {
             }
         }
 
-        private void draw_property() {
+        private void draw_glacier_property() {
             V4 add_button_rect = new V4(30, 70, 200, 50);
 
             draw.rect(add_button_rect, !helpers.mouse_inside(add_button_rect) ? new V4(90, 45, 230, 255) : new V4(170, 150, 240, 255), true, 25);
             draw.text(new V2(65, 84), "Roboto-Bold", 20, "Add Property");
             if(helpers.mouse_inside(add_button_rect) && mouse.button_just_pressed(mb.left, "general")) {
-                input.set_input_state("add_property");
+                input.set_input_state("add_glacier_property");
             } 
 
             for(var i = 0; i < properties.Count; i++) {
@@ -389,19 +366,19 @@ namespace Glacier {
                 draw.text(new V2(47 + draw.get_text_rect(new V2(30, 70), font, 24, properties[i].name).z, 71 + offset), "Roboto-Bold", 24, properties[i].datatype.ToString()[0].ToString().ToUpper());  
             
                 if(properties[i].datatype == "string") {
-                    property tmp = properties[i];
+                    glacier_property tmp = properties[i];
                     string tmp_ = tmp.default_value;
                     devgui.input_box(new V4(30, 110 + offset, 200, 35), font, ref tmp_, "general", properties[i].name, "");
                     tmp.default_value = tmp_;
                     properties[i] = tmp;
                 } else if(properties[i].datatype == "int") {
-                    property tmp = properties[i];
+                    glacier_property tmp = properties[i];
                     int tmp_ = tmp.default_value;
                     devgui.num_input_box(new V4(30, 110 + offset, 200, 35), font, ref tmp_, "general", properties[i].name);
                     tmp.default_value = tmp_;
                     properties[i] = tmp;
                 } else if(properties[i].datatype == "bool") {
-                    property tmp = properties[i];
+                    glacier_property tmp = properties[i];
                     bool tmp_ = tmp.default_value;
                     devgui.button(new V4(30, 110 + offset, draw.get_text_rect(new V2(0, 0), font, 24, properties[i].name).z + 10, 35), ref tmp_, font, "x");
                     tmp.default_value = tmp_;
@@ -410,13 +387,13 @@ namespace Glacier {
             }
         }
 
-        private void draw_add_property() {
+        private void draw_add_glacier_property() {
             draw.rect(new V4(0, 0, game.resolution.x, game.resolution.y), new V4(0, 0, 0, 170), true);
             V4 panel_rect = new V4(game.resolution.x / 2 - 200, game.resolution.y / 2 - 300, 400, 600);
             draw.rect(panel_rect, color.white, true, 25);
 
             draw.text(new V2(20 + panel_rect.x, 20 + panel_rect.y), "Roboto", 24, "Name", color.black);
-            devgui.input_box(new V4(20 + panel_rect.x, 70 + panel_rect.y, 200, 35), "Roboto", ref add_prop_name, "add_property", "add_prop_name", "");
+            devgui.input_box(new V4(20 + panel_rect.x, 70 + panel_rect.y, 200, 35), "Roboto", ref add_prop_name, "add_glacier_property", "add_prop_name", "");
     
             bool string_ = false;
             bool int_ = false;
@@ -442,9 +419,9 @@ namespace Glacier {
             draw.text(new V2(20 + panel_rect.x, 285 + panel_rect.y), "Roboto", 24, "Default", color.black);
 
             if(add_prop_type == "string") {
-                devgui.input_box(new V4(20 + panel_rect.x, 330 + panel_rect.y, 300, 35), "Roboto", ref add_prop_def_s, "add_property", "add_prop_def", "");
+                devgui.input_box(new V4(20 + panel_rect.x, 330 + panel_rect.y, 300, 35), "Roboto", ref add_prop_def_s, "add_glacier_property", "add_prop_def", "");
             } else if(add_prop_type == "int") {
-                devgui.num_input_box(new V4(20 + panel_rect.x, 330 + panel_rect.y, 300, 35), "Roboto", ref add_prop_def_i, "add_property", "add_prop_def");
+                devgui.num_input_box(new V4(20 + panel_rect.x, 330 + panel_rect.y, 300, 35), "Roboto", ref add_prop_def_i, "add_glacier_property", "add_prop_def");
             } else if(add_prop_type == "bool") {
                 devgui.button(new V4(20 + panel_rect.x, 330 + panel_rect.y, 110, 35), ref add_prop_def_b, "Roboto", "Default");
             }
@@ -454,7 +431,7 @@ namespace Glacier {
 
             if(add || input.get_key_just_pressed(input.key_return)) {
                 if(add_prop_name != "") {
-                    properties.Add(new property(add_prop_name, add_prop_type, add_prop_type == "string" ? add_prop_def_s : add_prop_type == "bool" ? add_prop_def_b : add_prop_type == "int" ? add_prop_def_i : ""));
+                    properties.Add(new glacier_property(add_prop_name, add_prop_type, add_prop_type == "string" ? add_prop_def_s : add_prop_type == "bool" ? add_prop_def_b : add_prop_type == "int" ? add_prop_def_i : ""));
                     
                     add_prop_name = "";
                     add_prop_def_b = false;
@@ -473,7 +450,7 @@ namespace Glacier {
             string tmp_ = paint_prop_name;
             devgui.input_box(new V4(30, 120, 200, 35), font, ref paint_prop_name, "general", "paint_prop_name", "");
 
-            foreach(property i in properties) {
+            foreach(glacier_property i in properties) {
                 if(i.name == paint_prop_name) {
                     if(i.datatype == "string") {
                         if(paint_prop_name != tmp_) {
@@ -509,7 +486,7 @@ namespace Glacier {
             tmp_ = highlight_prop_name;
             devgui.input_box(new V4(30, 300, 200, 35), font, ref highlight_prop_name, "general", "highlight_prop_name", "");
 
-            foreach(property i in properties) {
+            foreach(glacier_property i in properties) {
                 if(i.name == highlight_prop_name) {
                     if(i.datatype == "string") {
                         if(highlight_prop_name != tmp_) {
