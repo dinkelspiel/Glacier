@@ -8,18 +8,18 @@
     ".NETCoreApp,Version=v6.0": {
       "Glacier/1.0.0": {
         "dependencies": {
-          "Fjord": "1.2.0.0",
+          "Fjord": "1.0.7.0",
           "Newtonsoft.Json": "13.0.0.0"
         },
         "runtime": {
           "Glacier.dll": {}
         }
       },
-      "Fjord/1.2.0.0": {
+      "Fjord/1.0.7.0": {
         "runtime": {
           "Fjord.dll": {
-            "assemblyVersion": "1.2.0.0",
-            "fileVersion": "1.2.0.0"
+            "assemblyVersion": "1.0.7.0",
+            "fileVersion": "1.0.7.0"
           }
         }
       },
@@ -39,7 +39,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Fjord/1.2.0.0": {
+    "Fjord/1.0.7.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
