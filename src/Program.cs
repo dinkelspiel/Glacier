@@ -29,16 +29,18 @@ namespace Glacier {
         string font = "Roboto";
 
         List<List<Dictionary<string, dynamic>>> tile_map = new List<List<Dictionary<string, dynamic>>>(); 
-        Dictionary<string, glacier_tile> tiles = new Dictionary<string, glacier_tile>();
+        Dictionary<string, tile> tiles = new Dictionary<string, tile>();
 
         V2 size = new V2(30, 30);
         V2 tile_size = new V2(16, 16);
         float zoom = 1;
 
+        int grid_width, grid_height, tile_width, tile_height;
+
         V2f position = new V2f(0, 0);
 
-        List<glacier_property> properties = new List<glacier_property>() {
-            new glacier_property("tile_id", "string", ""),
+        List<property> properties = new List<property>() {
+            new property("tile_id", "string", ""),
         };
 
         V2 hovered = new V2(0, 0);
@@ -52,7 +54,7 @@ namespace Glacier {
         string add_tile_name = "";
         bool add_tile_button = false;
 
-        // Add glacier_property Vars 
+        // Add property Vars 
 
         string add_prop_name = "";
         string add_prop_type = "string";
@@ -73,6 +75,12 @@ namespace Glacier {
         string save_path = "";
         string load_path = "";
 
+        // Colors
+
+        V4 color_text = new V4(0, 0, 0, 255);
+        V4 color_background = new V4(255, 255, 255, 255);
+        V4 color_foreground = new V4(232, 232, 232, 255);
+        V4 color_darkerforeground = new V4(192, 175, 250, 255);
 
         public override void on_load()
         {
@@ -89,6 +97,10 @@ namespace Glacier {
             input.set_input_state("general");
 
             draw.load_font(font);
+            fui.set_font(font);
+            fui.font_size = 24;
+
+            grid_width = size.x; grid_height = size.y; tile_width = tile_size.x; tile_height = tile_size.y;
 
             // This is where you load all your scenes 
             // The if statement is so that it doesn't trigger multiple times
@@ -181,7 +193,7 @@ namespace Glacier {
                     draw_config();
                     break;
                 case (int)scenes.Property:
-                    draw_glacier_property();
+                    draw_property();
                     break;
                 case (int)scenes.Tools:
                     draw_tools();
@@ -190,8 +202,8 @@ namespace Glacier {
 
             if(input.get_input_state() == "add_tile") {
                 draw_add_tile();
-            } else if(input.get_input_state() == "add_glacier_property") {
-                draw_add_glacier_property();
+            } else if(input.get_input_state() == "add_property") {
+                draw_add_property();
             } else if(input.get_input_state() == "file") {
                 draw_file();
             }
@@ -220,9 +232,9 @@ namespace Glacier {
                     }
 
                     bool contains = false;
-                    glacier_property prop = properties[0];
+                    property prop = properties[0];
 
-                    foreach(glacier_property x in properties) {
+                    foreach(property x in properties) {
                         if(x.name == highlight_prop_name) {
                             contains = true;
                             prop = x;
@@ -298,7 +310,7 @@ namespace Glacier {
             devgui.button(new V4(20 + panel_rect.x, 145 + panel_rect.y, 80, 35), ref add_tile_button, "Roboto-Bold", "Add");
 
             if(add_tile_button) {
-                tiles.Add(add_tile_name, new glacier_tile(add_tile_name, add_tile_path));
+                tiles.Add(add_tile_name, new tile(add_tile_name, add_tile_path));
                 add_tile_name = "";
                 add_tile_path = "";
                 add_tile_button = false;
@@ -313,7 +325,7 @@ namespace Glacier {
             }
 
             if(input.get_key_just_pressed(input.key_return)) {
-                tiles.Add(add_tile_name, new glacier_tile(add_tile_name, add_tile_path));
+                tiles.Add(add_tile_name, new tile(add_tile_name, add_tile_path));
                 add_tile_name = "";
                 add_tile_path = "";
                 add_tile_button = false;
@@ -349,13 +361,13 @@ namespace Glacier {
             }
         }
 
-        private void draw_glacier_property() {
+        private void draw_property() {
             V4 add_button_rect = new V4(30, 70, 200, 50);
 
             draw.rect(add_button_rect, !helpers.mouse_inside(add_button_rect) ? new V4(90, 45, 230, 255) : new V4(170, 150, 240, 255), true, 25);
             draw.text(new V2(65, 84), "Roboto-Bold", 20, "Add Property");
             if(helpers.mouse_inside(add_button_rect) && mouse.button_just_pressed(mb.left, "general")) {
-                input.set_input_state("add_glacier_property");
+                input.set_input_state("add_property");
             } 
 
             for(var i = 0; i < properties.Count; i++) {
@@ -366,19 +378,19 @@ namespace Glacier {
                 draw.text(new V2(47 + draw.get_text_rect(new V2(30, 70), font, 24, properties[i].name).z, 71 + offset), "Roboto-Bold", 24, properties[i].datatype.ToString()[0].ToString().ToUpper());  
             
                 if(properties[i].datatype == "string") {
-                    glacier_property tmp = properties[i];
+                    property tmp = properties[i];
                     string tmp_ = tmp.default_value;
                     devgui.input_box(new V4(30, 110 + offset, 200, 35), font, ref tmp_, "general", properties[i].name, "");
                     tmp.default_value = tmp_;
                     properties[i] = tmp;
                 } else if(properties[i].datatype == "int") {
-                    glacier_property tmp = properties[i];
+                    property tmp = properties[i];
                     int tmp_ = tmp.default_value;
                     devgui.num_input_box(new V4(30, 110 + offset, 200, 35), font, ref tmp_, "general", properties[i].name);
                     tmp.default_value = tmp_;
                     properties[i] = tmp;
                 } else if(properties[i].datatype == "bool") {
-                    glacier_property tmp = properties[i];
+                    property tmp = properties[i];
                     bool tmp_ = tmp.default_value;
                     devgui.button(new V4(30, 110 + offset, draw.get_text_rect(new V2(0, 0), font, 24, properties[i].name).z + 10, 35), ref tmp_, font, "x");
                     tmp.default_value = tmp_;
@@ -387,13 +399,13 @@ namespace Glacier {
             }
         }
 
-        private void draw_add_glacier_property() {
+        private void draw_add_property() {
             draw.rect(new V4(0, 0, game.resolution.x, game.resolution.y), new V4(0, 0, 0, 170), true);
             V4 panel_rect = new V4(game.resolution.x / 2 - 200, game.resolution.y / 2 - 300, 400, 600);
             draw.rect(panel_rect, color.white, true, 25);
 
             draw.text(new V2(20 + panel_rect.x, 20 + panel_rect.y), "Roboto", 24, "Name", color.black);
-            devgui.input_box(new V4(20 + panel_rect.x, 70 + panel_rect.y, 200, 35), "Roboto", ref add_prop_name, "add_glacier_property", "add_prop_name", "");
+            devgui.input_box(new V4(20 + panel_rect.x, 70 + panel_rect.y, 200, 35), "Roboto", ref add_prop_name, "add_property", "add_prop_name", "");
     
             bool string_ = false;
             bool int_ = false;
@@ -419,9 +431,9 @@ namespace Glacier {
             draw.text(new V2(20 + panel_rect.x, 285 + panel_rect.y), "Roboto", 24, "Default", color.black);
 
             if(add_prop_type == "string") {
-                devgui.input_box(new V4(20 + panel_rect.x, 330 + panel_rect.y, 300, 35), "Roboto", ref add_prop_def_s, "add_glacier_property", "add_prop_def", "");
+                devgui.input_box(new V4(20 + panel_rect.x, 330 + panel_rect.y, 300, 35), "Roboto", ref add_prop_def_s, "add_property", "add_prop_def", "");
             } else if(add_prop_type == "int") {
-                devgui.num_input_box(new V4(20 + panel_rect.x, 330 + panel_rect.y, 300, 35), "Roboto", ref add_prop_def_i, "add_glacier_property", "add_prop_def");
+                devgui.num_input_box(new V4(20 + panel_rect.x, 330 + panel_rect.y, 300, 35), "Roboto", ref add_prop_def_i, "add_property", "add_prop_def");
             } else if(add_prop_type == "bool") {
                 devgui.button(new V4(20 + panel_rect.x, 330 + panel_rect.y, 110, 35), ref add_prop_def_b, "Roboto", "Default");
             }
@@ -431,7 +443,7 @@ namespace Glacier {
 
             if(add || input.get_key_just_pressed(input.key_return)) {
                 if(add_prop_name != "") {
-                    properties.Add(new glacier_property(add_prop_name, add_prop_type, add_prop_type == "string" ? add_prop_def_s : add_prop_type == "bool" ? add_prop_def_b : add_prop_type == "int" ? add_prop_def_i : ""));
+                    properties.Add(new property(add_prop_name, add_prop_type, add_prop_type == "string" ? add_prop_def_s : add_prop_type == "bool" ? add_prop_def_b : add_prop_type == "int" ? add_prop_def_i : ""));
                     
                     add_prop_name = "";
                     add_prop_def_b = false;
@@ -450,7 +462,7 @@ namespace Glacier {
             string tmp_ = paint_prop_name;
             devgui.input_box(new V4(30, 120, 200, 35), font, ref paint_prop_name, "general", "paint_prop_name", "");
 
-            foreach(glacier_property i in properties) {
+            foreach(property i in properties) {
                 if(i.name == paint_prop_name) {
                     if(i.datatype == "string") {
                         if(paint_prop_name != tmp_) {
@@ -486,7 +498,7 @@ namespace Glacier {
             tmp_ = highlight_prop_name;
             devgui.input_box(new V4(30, 300, 200, 35), font, ref highlight_prop_name, "general", "highlight_prop_name", "");
 
-            foreach(glacier_property i in properties) {
+            foreach(property i in properties) {
                 if(i.name == highlight_prop_name) {
                     if(i.datatype == "string") {
                         if(highlight_prop_name != tmp_) {
@@ -529,29 +541,82 @@ namespace Glacier {
         private void draw_file() {
             draw.rect(new V4(0, 0, game.resolution.x, game.resolution.y), new V4(0, 0, 0, 170), true);
             V4 panel_rect = new V4(game.resolution.x / 2 - 200, game.resolution.y / 2 - 300, 400, 600);
-            draw.rect(panel_rect, color.white, true, 25);
+            // draw.rect(panel_rect, color.white, true, 25);
 
-            bool save_ = false;
-            draw.text(new V2(30 + panel_rect.x, 30 + panel_rect.y), font, 24, "Save", color.black);
-            devgui.input_box(new V4(30 + panel_rect.x, 60 + panel_rect.y, 300, 35), font, ref save_path, "file", "save_file", "");
-            devgui.button(new V4(30 + panel_rect.x, 125 + panel_rect.y, 80, 35), ref save_, font, "Save");
-            if(save_) {
+            // bool save_ = false;
+            // draw.text(new V2(30 + panel_rect.x, 30 + panel_rect.y), font, 24, "Save", color.black);
+            // devgui.input_box(new V4(30 + panel_rect.x, 60 + panel_rect.y, 300, 35), font, ref save_path, "file", "save_file", "");
+            // devgui.button(new V4(30 + panel_rect.x, 125 + panel_rect.y, 80, 35), ref save_, font, "Save");
+            // if(save_) {
+            //     save(save_path);
+            //     input.set_input_state("general");
+            // }
+
+            // bool load_ = false;
+            // draw.text(new V2(30 + panel_rect.x, 180 + panel_rect.y), font, 24, "Load", color.black);
+            // devgui.input_box(new V4(30 + panel_rect.x, 210 + panel_rect.y, 300, 35), font, ref load_path, "file", "load_file", "");
+            // devgui.button(new V4(30 + panel_rect.x, 275 + panel_rect.y, 80, 35), ref load_, font, "Load");
+            // if(load_) {
+            //     load(load_path);
+            //     input.set_input_state("general");
+            // }
+ 
+            fui.begin("File", false);
+            fui.options()
+                .position(new V2(panel_rect.x, panel_rect.y))
+                .size(new V2(panel_rect.z, panel_rect.w))
+                .input_state("file")
+
+                .background(color_background)
+                .text(color_text)
+                .foreground(color_foreground)
+                .darkerforeground(color_darkerforeground)
+
+                .assign();
+
+            fui.header("Save");
+            fui.input_box("path", ref save_path, "save_path");
+            if(fui.button("Save", "save_button")) {
                 save(save_path);
                 input.set_input_state("general");
             }
 
-            bool load_ = false;
-            draw.text(new V2(30 + panel_rect.x, 180 + panel_rect.y), font, 24, "Load", color.black);
-            devgui.input_box(new V4(30 + panel_rect.x, 210 + panel_rect.y, 300, 35), font, ref load_path, "file", "load_file", "");
-            devgui.button(new V4(30 + panel_rect.x, 275 + panel_rect.y, 80, 35), ref load_, font, "Load");
-            if(load_) {
+            fui.header("Load");
+            fui.input_box("path", ref load_path, "load_path");
+            if (fui.button("Load", "load_button")) {
                 load(load_path);
                 input.set_input_state("general");
             }
+
+            fui.header("Resize");
+            fui.slider_int("Grid Width", ref grid_width, new V2(0, 128));
+            fui.slider_int("Grid Height", ref grid_height, new V2(0, 128));
+            fui.slider_int("Tile Width", ref tile_width, new V2(0, 128));
+            fui.slider_int("Tile Height", ref tile_height, new V2(0, 128));
+            if(fui.button("Resize", "resize_button")) {
+                zoom = 1;
+                size = new V2(grid_width, grid_height);
+                tile_size = new V2(tile_width, tile_height);
+                input.input_state = "general";
+
+                tile_map = new List<List<Dictionary<string, dynamic>>>(); 
+                tiles = new Dictionary<string, tile>();
+
+                for(var i = 0; i < size.x; i++) {
+                    tile_map.Add(new List<Dictionary<string, dynamic>>());
+                    for(var j = 0; j < size.y; j++) {
+                        tile_map[i].Add(new Dictionary<string, dynamic>() {
+                            {"tile_id", ""}
+                        });
+                    }
+                }
+            }
+            
+            fui.end();
         }
     
         private void save(string path) {
-            glacier_format format = new glacier_format();
+            tilemap format = new tilemap();
             format.grid_size = size;
             format.tile_size = tile_size;
             format.properties = properties;
@@ -559,7 +624,7 @@ namespace Glacier {
             format.tiles = tiles;
 
             string jsonString = JsonConvert.SerializeObject(format);
-            Debug.send(jsonString);
+            // Debug.send(jsonString);
             if(!Directory.Exists(game.get_resource_folder() + "/" + game.asset_pack + "/data")) {
                 Directory.CreateDirectory(game.get_resource_folder() + "/" + game.asset_pack + "/data");
             }
@@ -568,18 +633,18 @@ namespace Glacier {
                 Directory.CreateDirectory(game.get_resource_folder() + "/" + game.asset_pack + "/data/tilemaps");
             }
 
-            File.WriteAllText(game.get_resource_folder() + "/" + game.asset_pack + "/data/tilemaps/" + path + ".glacier", jsonString);
+            File.WriteAllText(game.get_resource_folder() + "/" + game.asset_pack + "/data/tilemaps/" + path + ".ftm", jsonString);
         }
 
         private void load(string path) {
             string JsonString = "";
-            if(File.Exists(game.get_resource_folder() + "/" + game.asset_pack + "/data/tilemaps/" + path + ".glacier")) {
-                JsonString = File.ReadAllText(game.get_resource_folder() + "/" + game.asset_pack + "/data/tilemaps/" + path + ".glacier");
+            if(File.Exists(game.get_resource_folder() + "/" + game.asset_pack + "/data/tilemaps/" + path + ".ftm")) {
+                JsonString = File.ReadAllText(game.get_resource_folder() + "/" + game.asset_pack + "/data/tilemaps/" + path + ".ftm");
             } else {
                 return;
             }
 
-            glacier_format? format = JsonConvert.DeserializeObject<glacier_format>(JsonString);
+            tilemap? format = JsonConvert.DeserializeObject<tilemap>(JsonString);
 
             foreach(string key in format.tiles.Keys) {
                 format.tiles[key].tex.set_texture(format.tiles[key].path);
