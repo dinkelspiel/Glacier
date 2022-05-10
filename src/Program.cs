@@ -93,7 +93,7 @@ namespace Glacier {
                 }
             }
 
-            game.set_render_background(255, 255, 255, 255);
+            set_background(new V4(255, 255, 255, 255));
             input.set_input_state("general");
 
             draw.load_font(font);
@@ -105,13 +105,13 @@ namespace Glacier {
             // This is where you load all your scenes 
             // The if statement is so that it doesn't trigger multiple times
 
-            if(!scene_handler.get_scene("glacier")) {
+            if(!scene_handler.scene_exists("glacier")) {
 
                 // Add all scenes
-                scene_handler.add_scene("glacier", new main());
+                scene_handler.register("glacier", new main());
 
                 // Load the first scene this can later be called in any file as for example a win condition to switch scene.
-                scene_handler.load_scene("glacier");
+                scene_handler.load("glacier");
             }
         }
 
@@ -123,21 +123,21 @@ namespace Glacier {
             float move_speed = 40f * (float)game.delta_time;
             float zoom_speed = 0.2f * (float)game.delta_time;
 
-            if(input.get_key_pressed(input.key_up, "general")) {
+            if(input.key_pressed(input.key_up, "general")) {
                 zoom += zoom < 5 ? zoom_speed : 0;
-            } else if(input.get_key_pressed(input.key_down, "general")) {
+            } else if(input.key_pressed(input.key_down, "general")) {
                 zoom -= zoom > 1 ? zoom_speed : 0;
             }
 
-            if(input.get_key_pressed(input.key_w, "general")) {
+            if(input.key_pressed(input.key_w, "general")) {
                 position.y -= move_speed;
-            } else if(input.get_key_pressed(input.key_s, "general")) {
+            } else if(input.key_pressed(input.key_s, "general")) {
                 position.y += move_speed;
             }
 
-            if(input.get_key_pressed(input.key_a, "general")) {
+            if(input.key_pressed(input.key_a, "general")) {
                 position.x -= move_speed;
-            } else if(input.get_key_pressed(input.key_d, "general")) {
+            } else if(input.key_pressed(input.key_d, "general")) {
                 position.x += move_speed;
             }
 
@@ -247,6 +247,19 @@ namespace Glacier {
                     }
 
                     if(tile_map[i][j].Keys.ToArray().Contains(highlight_prop_name)) {
+                        if(highlight_prop_value.GetType() != tile_map[i][j][highlight_prop_name].GetType()) {
+                            switch(tile_map[i][j][highlight_prop_name].GetType()) {
+                                case string:
+                                    highlight_prop_value = "";
+                                    break;
+                                case int:
+                                    highlight_prop_value = 0;
+                                    break;
+                                case bool:
+                                    highlight_prop_value = false;
+                                    break;
+                            }
+                        }
                         if(tile_map[i][j][highlight_prop_name] == highlight_prop_value) {
                             if(contains) {
                                 draw.rect(new V4(pos.x, pos.y, size.x, size.y), new V4(255, 89, 89, 170));
@@ -317,14 +330,14 @@ namespace Glacier {
                 input.set_input_state("general");
             }
 
-            if(input.get_key_just_pressed(input.key_escape)) {
+            if(input.key_just_pressed(input.key_escape)) {
                 add_tile_name = "";
                 add_tile_path = "";
                 add_tile_button = false;
                 input.set_input_state("general");
             }
 
-            if(input.get_key_just_pressed(input.key_return)) {
+            if(input.key_just_pressed(input.key_return)) {
                 tiles.Add(add_tile_name, new tile(add_tile_name, add_tile_path));
                 add_tile_name = "";
                 add_tile_path = "";
@@ -441,7 +454,7 @@ namespace Glacier {
             bool add = false;
             devgui.button(new V4(20 + panel_rect.x, 385 + panel_rect.y, 80, 35), ref add, "Roboto", "Add");
 
-            if(add || input.get_key_just_pressed(input.key_return)) {
+            if(add || input.key_just_pressed(input.key_return)) {
                 if(add_prop_name != "") {
                     properties.Add(new property(add_prop_name, add_prop_type, add_prop_type == "string" ? add_prop_def_s : add_prop_type == "bool" ? add_prop_def_b : add_prop_type == "int" ? add_prop_def_i : ""));
                     
@@ -643,8 +656,8 @@ namespace Glacier {
             } else {
                 return;
             }
-
-            tilemap? format = JsonConvert.DeserializeObject<tilemap>(JsonString);
+                
+            tilemap format = JsonConvert.DeserializeObject<tilemap>(JsonString);
 
             foreach(string key in format.tiles.Keys) {
                 format.tiles[key].tex.set_texture(format.tiles[key].path);

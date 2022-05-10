@@ -3,6 +3,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <NoWarn>8602</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fjord">
